@@ -40,16 +40,17 @@
   <rect x="740" y="186" width="390" height="390" rx="56" fill="url(#dots)" opacity=".38" transform="rotate(12 935 381)"/>
 
   <!-- Brand -->
-  <g transform="translate(70 58)">
-    <rect width="306" height="104" rx="52" fill="#fff" fill-opacity=".1" stroke="#ffe052" stroke-opacity=".72" stroke-width="2"/>
-    <g transform="translate(25 22)" fill="none" stroke="#ffe052" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M0 33C0 18 9 5 20 5s20 13 20 28"/>
-      <path d="M17 33C17 13 28 1 39 1s21 14 21 32"/>
-      <path d="M36 33C37 18 46 8 56 8s18 11 18 25"/>
-      <path d="M-2 37H75M4 45c18-6 47-6 65 0"/>
+  <g transform="translate(63 55)">
+    <ellipse cx="182" cy="80" rx="182" ry="80" fill="#90006F" stroke="#F8DB00" stroke-width="3"/>
+    <g transform="translate(142 18)" fill="none" stroke="#F8DB00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 45 C-2 25 9 6 22 5 C36 5 45 27 42 45"/>
+      <path d="M26 45 C24 16 40 -2 54 -2 C69 -2 82 19 79 45"/>
+      <path d="M61 45 C61 23 73 7 86 8 C99 9 108 28 104 45"/>
+      <path d="M-4 49 H109"/>
+      <path d="M6 58 C28 50 73 50 100 58"/>
     </g>
-    <text x="176" y="52" class="serif" font-size="32" font-weight="700" letter-spacing="3" fill="#fff5a7">MISS BIA</text>
-    <text x="176" y="76" class="sans" font-size="10" font-weight="700" letter-spacing="6" fill="#ffe052">LINGERIE</text>
+    <text x="182" y="105" text-anchor="middle" class="serif" font-size="45" letter-spacing="4" fill="#F8DB00">MISS BIA</text>
+    <text x="182" y="132" text-anchor="middle" class="sans" font-size="12" font-weight="700" letter-spacing="8" fill="#F8DB00">LINGERIE</text>
   </g>
 
   <!-- Header badge -->
