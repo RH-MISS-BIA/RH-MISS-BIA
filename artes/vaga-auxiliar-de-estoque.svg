@@ -1,91 +1,128 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
-  <title id="title">Vaga de Auxiliar de Estoque - Miss Bia</title>
-  <desc id="desc">Arte para redes sociais divulgando vaga presencial CLT em Itapevi.</desc>
+  <title id="title">Vaga de Auxiliar de Estoque — Miss Bia</title>
+  <desc id="desc">Arte quadrada sofisticada para divulgação de vaga presencial CLT em Itapevi.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#78005F"/>
-      <stop offset="55%" stop-color="#9A006F"/>
-      <stop offset="100%" stop-color="#4B003C"/>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#270018"/>
+      <stop offset=".48" stop-color="#710043"/>
+      <stop offset="1" stop-color="#a50069"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FFE600"/>
-      <stop offset="100%" stop-color="#FFB800"/>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7a6"/>
+      <stop offset=".38" stop-color="#ffd928"/>
+      <stop offset="1" stop-color="#f3a400"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".07"/>
     </linearGradient>
     <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="14" stdDeviation="13" flood-color="#320026" flood-opacity=".32"/>
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1d0012" flood-opacity=".36"/>
     </filter>
+    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="3" cy="3" r="2" fill="#fff" opacity=".2"/>
+    </pattern>
     <style>
       .sans { font-family: Arial, Helvetica, sans-serif; }
       .serif { font-family: Georgia, 'Times New Roman', serif; }
     </style>
   </defs>
 
-  <!-- Background -->
-  <rect width="1200" height="1200" fill="url(#bg)"/>
-  <circle cx="1110" cy="55" r="280" fill="#C9008D" opacity=".32"/>
-  <circle cx="88" cy="1120" r="315" fill="#510040" opacity=".55"/>
-  <path d="M0 880 C240 745 375 945 576 832 C810 701 935 810 1200 665 L1200 1200 L0 1200 Z" fill="#64004D" opacity=".53"/>
-  <path d="M0 944 C255 813 445 1013 650 893 C865 767 1020 869 1200 784" fill="none" stroke="#F9D900" stroke-opacity=".27" stroke-width="4"/>
+  <!-- Premium background -->
+  <rect width="1200" height="1200" fill="url(#background)"/>
+  <circle cx="1070" cy="75" r="290" fill="#ff40b5" opacity=".18" filter="url(#softGlow)"/>
+  <circle cx="65" cy="1110" r="340" fill="#ffca16" opacity=".12" filter="url(#softGlow)"/>
+  <path d="M720 -30 C920 145 960 245 1225 250 L1225 -30Z" fill="#f6c800" opacity=".08"/>
+  <path d="M0 865 C175 752 360 837 503 954 C687 1104 901 952 1200 768 L1200 1200 L0 1200Z" fill="#240015" opacity=".42"/>
+  <rect x="740" y="186" width="390" height="390" rx="56" fill="url(#dots)" opacity=".38" transform="rotate(12 935 381)"/>
 
-  <!-- Logo panel -->
-  <g transform="translate(63 55)">
-    <ellipse cx="182" cy="80" rx="182" ry="80" fill="#90006F" stroke="#F8DB00" stroke-width="3"/>
-    <g transform="translate(142 18)" fill="none" stroke="#F8DB00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M0 45 C-2 25 9 6 22 5 C36 5 45 27 42 45"/>
-      <path d="M26 45 C24 16 40 -2 54 -2 C69 -2 82 19 79 45"/>
-      <path d="M61 45 C61 23 73 7 86 8 C99 9 108 28 104 45"/>
-      <path d="M-4 49 H109"/>
-      <path d="M6 58 C28 50 73 50 100 58"/>
+  <!-- Brand -->
+  <g transform="translate(70 58)">
+    <rect width="306" height="104" rx="52" fill="#fff" fill-opacity=".1" stroke="#ffe052" stroke-opacity=".72" stroke-width="2"/>
+    <g transform="translate(25 22)" fill="none" stroke="#ffe052" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 33C0 18 9 5 20 5s20 13 20 28"/>
+      <path d="M17 33C17 13 28 1 39 1s21 14 21 32"/>
+      <path d="M36 33C37 18 46 8 56 8s18 11 18 25"/>
+      <path d="M-2 37H75M4 45c18-6 47-6 65 0"/>
     </g>
-    <text x="182" y="105" text-anchor="middle" class="serif" font-size="45" letter-spacing="4" fill="#F8DB00">MISS BIA</text>
-    <text x="182" y="132" text-anchor="middle" class="sans" font-size="12" font-weight="700" letter-spacing="8" fill="#F8DB00">LINGERIE</text>
+    <text x="176" y="52" class="serif" font-size="32" font-weight="700" letter-spacing="3" fill="#fff5a7">MISS BIA</text>
+    <text x="176" y="76" class="sans" font-size="10" font-weight="700" letter-spacing="6" fill="#ffe052">LINGERIE</text>
   </g>
 
-  <!-- Hiring label -->
+  <!-- Header badge -->
   <g filter="url(#shadow)">
-    <rect x="805" y="76" width="320" height="72" rx="36" fill="url(#accent)"/>
-    <text x="965" y="122" text-anchor="middle" class="sans" font-size="27" font-weight="800" letter-spacing="1" fill="#65004E">ESTAMOS CONTRATANDO</text>
+    <rect x="783" y="65" width="347" height="74" rx="37" fill="url(#gold)"/>
+    <circle cx="826" cy="102" r="18" fill="#730047"/>
+    <path d="M817 103l6 6 13-16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="969" y="110" text-anchor="middle" class="sans" font-size="22" font-weight="900" letter-spacing="1.5" fill="#66003f">VAGA ABERTA</text>
   </g>
 
-  <!-- Main title -->
-  <text x="74" y="305" class="sans" font-size="29" font-weight="700" letter-spacing="5" fill="#FFE600">OPORTUNIDADE</text>
-  <text x="74" y="410" class="sans" font-size="87" font-weight="900" fill="#FFFFFF">AUXILIAR</text>
-  <text x="74" y="503" class="sans" font-size="87" font-weight="900" fill="#FFFFFF">DE ESTOQUE</text>
-  <rect x="74" y="540" width="476" height="9" rx="5" fill="#FFE600"/>
+  <!-- Job title -->
+  <text x="72" y="241" class="sans" font-size="24" font-weight="800" letter-spacing="6" fill="#ffe35a">OPORTUNIDADE</text>
+  <rect x="72" y="264" width="92" height="6" rx="3" fill="url(#gold)"/>
+  <text x="70" y="372" class="sans" font-size="106" font-weight="900" letter-spacing="-3" fill="#fff">AUXILIAR</text>
+  <text x="70" y="474" class="sans" font-size="106" font-weight="900" letter-spacing="-3" fill="#fff">DE ESTOQUE</text>
+  <text x="75" y="521" class="sans" font-size="25" font-weight="600" fill="#fce8f5">Venha crescer com a Miss Bia Lingerie.</text>
 
-  <!-- Info cards -->
+  <!-- Decorative inventory illustration -->
+  <g transform="translate(792 238)" filter="url(#shadow)">
+    <rect x="28" y="64" width="246" height="214" rx="28" fill="#fff" fill-opacity=".12" stroke="#fff" stroke-opacity=".24" stroke-width="2"/>
+    <path d="M61 110h181M61 170h181M61 230h181" stroke="#ffe052" stroke-width="7" stroke-linecap="round" opacity=".9"/>
+    <path d="M85 89v164M157 89v164M220 89v164" stroke="#fff" stroke-width="7" stroke-linecap="round" opacity=".82"/>
+    <g fill="url(#gold)">
+      <rect x="68" y="119" width="48" height="34" rx="6"/><rect x="167" y="119" width="42" height="34" rx="6"/>
+      <rect x="101" y="179" width="43" height="34" rx="6"/><rect x="178" y="179" width="47" height="34" rx="6"/>
+    </g>
+    <g fill="#fff" fill-opacity=".92">
+      <rect x="75" y="126" width="22" height="5" rx="2"/><rect x="174" y="126" width="20" height="5" rx="2"/>
+      <rect x="108" y="186" width="20" height="5" rx="2"/><rect x="185" y="186" width="20" height="5" rx="2"/>
+    </g>
+    <path d="M-2 305h314" stroke="#ffe052" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="37" cy="325" r="14" fill="#ffe052"/><circle cx="260" cy="325" r="14" fill="#ffe052"/>
+  </g>
+
+  <!-- Information cards -->
   <g filter="url(#shadow)">
-    <rect x="74" y="600" width="510" height="125" rx="24" fill="#FFFFFF" fill-opacity=".97"/>
-    <circle cx="125" cy="662" r="27" fill="#90006F"/>
-    <path d="M125 640 C113 640 104 649 104 661 C104 677 125 689 125 689 C125 689 146 677 146 661 C146 649 137 640 125 640 Z M125 668 A8 8 0 1 1 125 652 A8 8 0 1 1 125 668 Z" fill="#FFE600"/>
-    <text x="171" y="655" class="sans" font-size="22" font-weight="700" fill="#700057">LOCAL DE TRABALHO</text>
-    <text x="171" y="690" class="sans" font-size="31" font-weight="800" fill="#2C0022">ITAPEVI • 100% PRESENCIAL</text>
+    <rect x="70" y="575" width="512" height="145" rx="28" fill="url(#card)" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+    <circle cx="127" cy="647" r="32" fill="url(#gold)"/>
+    <path d="M127 625c-13 0-23 10-23 23 0 17 23 33 23 33s23-16 23-33c0-13-10-23-23-23zm0 31a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="#6d0043"/>
+    <text x="181" y="626" class="sans" font-size="19" font-weight="800" letter-spacing="2" fill="#ffe35a">LOCAL DE TRABALHO</text>
+    <text x="181" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">ITAPEVI</text>
+    <text x="181" y="699" class="sans" font-size="20" font-weight="600" fill="#f9ddeb">100% PRESENCIAL</text>
 
-    <rect x="616" y="600" width="510" height="125" rx="24" fill="#FFFFFF" fill-opacity=".97"/>
-    <circle cx="667" cy="662" r="27" fill="#90006F"/>
-    <path d="M651 657 H683 V678 H651 Z M657 651 H677 V658 H657 Z" fill="#FFE600"/>
-    <text x="713" y="655" class="sans" font-size="22" font-weight="700" fill="#700057">CONTRATAÇÃO</text>
-    <text x="713" y="690" class="sans" font-size="31" font-weight="800" fill="#2C0022">CLT • R$ 2.031,00</text>
+    <rect x="618" y="575" width="512" height="145" rx="28" fill="url(#card)" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
+    <circle cx="675" cy="647" r="32" fill="url(#gold)"/>
+    <path d="M653 637h44v31h-44zm7-8h30v10h-30z" fill="#6d0043"/>
+    <text x="729" y="626" class="sans" font-size="19" font-weight="800" letter-spacing="2" fill="#ffe35a">CONTRATAÇÃO</text>
+    <text x="729" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">CLT • R$ 2.031,00</text>
+    <text x="729" y="699" class="sans" font-size="20" font-weight="600" fill="#f9ddeb">INÍCIO IMEDIATO</text>
   </g>
 
-  <!-- Details -->
-  <text x="74" y="789" class="sans" font-size="25" font-weight="800" letter-spacing="2" fill="#FFE600">HORÁRIO</text>
-  <text x="74" y="829" class="sans" font-size="26" font-weight="700" fill="#FFFFFF">SEGUNDA A SEXTA: 8H30 ÀS 17H00</text>
-  <text x="74" y="865" class="sans" font-size="26" font-weight="700" fill="#FFFFFF">SÁBADO: 8H30 ÀS 16H00</text>
+  <!-- Schedule and benefits -->
+  <g>
+    <rect x="70" y="760" width="512" height="160" rx="26" fill="#250017" fill-opacity=".38" stroke="#ffe052" stroke-opacity=".35"/>
+    <text x="105" y="807" class="sans" font-size="20" font-weight="900" letter-spacing="3" fill="#ffe35a">HORÁRIO</text>
+    <text x="105" y="851" class="sans" font-size="22" font-weight="700" fill="#fff">SEG. A SEX.: 8H30 ÀS 17H00</text>
+    <text x="105" y="887" class="sans" font-size="22" font-weight="700" fill="#fff">SÁBADO: 8H30 ÀS 16H00</text>
 
-  <text x="660" y="789" class="sans" font-size="25" font-weight="800" letter-spacing="2" fill="#FFE600">BENEFÍCIOS</text>
-  <text x="660" y="829" class="sans" font-size="23" font-weight="700" fill="#FFFFFF">• Plano odontológico  • Vale-transporte</text>
-  <text x="660" y="865" class="sans" font-size="23" font-weight="700" fill="#FFFFFF">• Convênio SESC  • 10% off produtos Miss Bia</text>
+    <rect x="618" y="760" width="512" height="160" rx="26" fill="#250017" fill-opacity=".38" stroke="#ffe052" stroke-opacity=".35"/>
+    <text x="653" y="807" class="sans" font-size="20" font-weight="900" letter-spacing="3" fill="#ffe35a">BENEFÍCIOS</text>
+    <text x="653" y="851" class="sans" font-size="20" font-weight="700" fill="#fff">Plano odontológico • Vale-transporte</text>
+    <text x="653" y="887" class="sans" font-size="20" font-weight="700" fill="#fff">Convênio SESC • 10% off produtos</text>
+  </g>
 
-  <!-- CTA -->
+  <!-- Call to action -->
   <g filter="url(#shadow)">
-    <rect x="74" y="944" width="1052" height="168" rx="32" fill="url(#accent)"/>
-    <circle cx="165" cy="1028" r="53" fill="#25D366"/>
-    <path d="M137 1056 L142 1035 C133 1015 140 990 158 979 C181 965 211 974 223 997 C235 1020 226 1049 203 1060 C190 1067 176 1067 163 1061 Z" fill="#FFFFFF"/>
-    <path d="M173 1003 C176 1000 179 1001 181 1005 L186 1016 C187 1019 187 1022 184 1024 L180 1028 C185 1038 192 1044 201 1048 L205 1043 C207 1040 210 1040 213 1041 L224 1047 C227 1049 227 1053 225 1056 C220 1062 213 1065 205 1064 C182 1060 162 1041 157 1018 C155 1010 166 1004 173 1003 Z" fill="#25D366"/>
-    <text x="247" y="1007" class="sans" font-size="25" font-weight="800" letter-spacing="2" fill="#65004E">ENVIE SEU CURRÍCULO PELO WHATSAPP</text>
-    <text x="247" y="1069" class="sans" font-size="52" font-weight="900" fill="#65004E">(11) 95117-0077</text>
+    <rect x="70" y="970" width="1060" height="151" rx="32" fill="url(#gold)"/>
+    <circle cx="150" cy="1046" r="43" fill="#20bf61"/>
+    <path d="M130 1080l5-18a33 33 0 1 1 14 13zm17-52c-3 0-5 2-5 5 1 12 11 24 23 28 3 1 6-1 8-4l2-4-8-4-3 4c-5-2-9-6-11-11l4-3-4-8c-2-2-4-3-6-3z" fill="#fff"/>
+    <text x="221" y="1023" class="sans" font-size="18" font-weight="900" letter-spacing="2.4" fill="#610039">ENVIE SEU CURRÍCULO PELO WHATSAPP</text>
+    <text x="221" y="1083" class="sans" font-size="52" font-weight="900" fill="#610039">(11) 95117-0077</text>
+    <text x="995" y="1062" text-anchor="end" class="sans" font-size="18" font-weight="800" fill="#610039">FAÇA PARTE DO NOSSO TIME</text>
   </g>
 
-  <text x="600" y="1166" text-anchor="middle" class="sans" font-size="17" font-weight="700" letter-spacing="2" fill="#FFFFFF" opacity=".8">MISS BIA LINGERIE • FAÇA PARTE DO NOSSO TIME</text>
+  <text x="600" y="1166" text-anchor="middle" class="sans" font-size="15" font-weight="700" letter-spacing="2.2" fill="#fff" opacity=".8">MISS BIA LINGERIE • ITAPEVI</text>
 </svg>
