@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="364" height="160" viewBox="0 0 364 160">
+  <ellipse cx="182" cy="80" rx="180.5" ry="78.5" fill="#90006F" stroke="#F8DB00" stroke-width="3"/>
+  <g transform="translate(142 18)" fill="none" stroke="#F8DB00" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 45 C-2 25 9 6 22 5 C36 5 45 27 42 45"/>
+    <path d="M26 45 C24 16 40 -2 54 -2 C69 -2 82 19 79 45"/>
+    <path d="M61 45 C61 23 73 7 86 8 C99 9 108 28 104 45"/>
+    <path d="M-4 49 H109"/>
+    <path d="M6 58 C28 50 73 50 100 58"/>
+  </g>
+  <text x="182" y="105" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="45" letter-spacing="4" fill="#F8DB00">MISS BIA</text>
+  <text x="182" y="132" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" letter-spacing="8" fill="#F8DB00">LINGERIE</text>
+</svg>
