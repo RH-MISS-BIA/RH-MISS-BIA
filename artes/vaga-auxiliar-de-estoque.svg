@@ -80,14 +80,14 @@
     <circle cx="127" cy="647" r="32" fill="url(#gold)"/>
     <path d="M127 625c-13 0-23 10-23 23 0 17 23 33 23 33s23-16 23-33c0-13-10-23-23-23zm0 31a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="#6d0043"/>
     <text x="181" y="626" class="sans" font-size="19" font-weight="800" letter-spacing="2" fill="#ffe35a">LOCAL DE TRABALHO</text>
-    <text x="181" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">ITAPEVI</text>
+    <text x="181" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">SÃO MIGUEL PTA</text>
     <text x="181" y="699" class="sans" font-size="20" font-weight="600" fill="#f9ddeb">100% PRESENCIAL</text>
 
     <rect x="618" y="575" width="512" height="145" rx="28" fill="url(#card)" stroke="#fff" stroke-opacity=".25" stroke-width="2"/>
     <circle cx="675" cy="647" r="32" fill="url(#gold)"/>
     <path d="M653 637h44v31h-44zm7-8h30v10h-30z" fill="#6d0043"/>
     <text x="729" y="626" class="sans" font-size="19" font-weight="800" letter-spacing="2" fill="#ffe35a">CONTRATAÇÃO</text>
-    <text x="729" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">CLT • R$ 2.031,00</text>
+    <text x="729" y="671" class="sans" font-size="30" font-weight="800" fill="#fff">CLT • R$ 2.120,00</text>
     <text x="729" y="699" class="sans" font-size="20" font-weight="600" fill="#f9ddeb">INÍCIO IMEDIATO</text>
   </g>
 
