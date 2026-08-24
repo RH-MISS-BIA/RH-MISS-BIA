@@ -3,310 +3,547 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capa Vaga Visual Merchandising - MISS BIA</title>
+    <title>Vaga Visual Merchandising - MISS BIA LINGERIE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #f0f0f0;
+            background: #1a1a2e;
         }
 
-        .container {
+        /* ── CANVAS 1080×1080 ── */
+        .canvas {
             width: 1080px;
             height: 1080px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            background: #2b0a3d;
+            box-shadow: 0 20px 60px rgba(0,0,0,.6);
         }
 
-        /* Fundo com gradiente premium */
-        .background {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e8eef5 50%, #f0f4f9 100%);
-            position: relative;
+        /* ── FUNDO: gradiente roxo-magenta escuro ── */
+        .bg-gradient {
+            position: absolute; inset: 0;
+            background:
+                radial-gradient(ellipse 70% 60% at 75% 55%, rgba(90,10,110,.85) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 70% at 20% 40%, rgba(60,5,80,.9) 0%, transparent 65%),
+                linear-gradient(150deg, #1c0430 0%, #2e0848 35%, #3a0a55 60%, #1c0430 100%);
         }
 
-        /* Padrão sutil de loja iluminada */
-        .pattern-overlay {
+        /* Textura de pontos discretos */
+        .bg-texture {
+            position: absolute; inset: 0;
+            background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
+            background-size: 28px 28px;
+        }
+
+        /* Brilhos de vitrine desfocados */
+        .bg-glow-1 {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(173, 216, 230, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(25, 68, 124, 0.08) 0%, transparent 50%);
-            pointer-events: none;
+            width: 420px; height: 420px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(200,80,220,.18) 0%, transparent 70%);
+            top: -80px; right: 80px;
+            filter: blur(40px);
         }
-
-        /* Elementos decorativos - araras desfocadas */
-        .deco-element {
+        .bg-glow-2 {
             position: absolute;
-            opacity: 0.08;
-            pointer-events: none;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,210,0,.10) 0%, transparent 70%);
+            bottom: 60px; left: 30px;
+            filter: blur(50px);
+        }
+        .bg-glow-3 {
+            position: absolute;
+            width: 250px; height: 500px;
+            background: linear-gradient(180deg, rgba(255,200,255,.07), transparent);
+            top: 0; right: 260px;
+            filter: blur(30px);
         }
 
-        .deco-left {
-            left: -50px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 300px;
-            height: 400px;
-            background: linear-gradient(90deg, transparent, rgba(25, 68, 124, 0.5), transparent);
-            filter: blur(20px);
+        /* ── SILHUETA / FOTO PROFISSIONAL (lado direito) ── */
+        .person-area {
+            position: absolute;
+            right: 0; bottom: 0;
+            width: 510px; height: 870px;
+            z-index: 5;
         }
 
-        .deco-right {
-            right: -50px;
-            top: 40%;
-            width: 350px;
-            height: 450px;
-            background: linear-gradient(90deg, transparent, rgba(219, 112, 147, 0.4), transparent);
-            filter: blur(25px);
+        /* Silhueta vetorial SVG embutida de profissional feminina */
+        .person-svg {
+            position: absolute;
+            bottom: 0; right: 0;
+            width: 100%; height: 100%;
         }
 
-        /* Container principal de conteúdo */
-        .content-wrapper {
-            width: 100%;
-            height: 100%;
+        /* Halos de luz atrás da figura */
+        .person-halo {
+            position: absolute;
+            width: 380px; height: 700px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse, rgba(220,100,255,.15) 0%, transparent 65%);
+            bottom: 0; right: 50px;
+            filter: blur(35px);
+            z-index: 4;
+        }
+
+        /* ── COLUNA ESQUERDA DE TEXTO ── */
+        .left-col {
+            position: absolute;
+            left: 48px; top: 0; bottom: 0;
+            width: 570px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            padding: 60px 50px;
-            position: relative;
-            z-index: 10;
+            justify-content: flex-start;
+            padding-top: 44px;
+            z-index: 20;
         }
 
-        /* Logo no topo */
-        .header {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #194478;
-            text-transform: uppercase;
-            font-style: italic;
-        }
-
-        .logo-underline {
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, #194478, #DB7093, transparent);
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Seção central principal */
-        .main-content {
-            flex: 1;
+        /* ── LOGO TOPO ── */
+        .logo-wrap {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            gap: 20px;
-            width: 100%;
+            gap: 14px;
+            margin-bottom: 30px;
         }
-
-        .badge {
-            display: inline-block;
-            background: rgba(25, 68, 124, 0.1);
-            border: 2px solid #194478;
-            border-radius: 30px;
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #194478;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .main-title {
-            font-size: 72px;
-            font-weight: 800;
-            color: #194478;
-            letter-spacing: 2px;
-            line-height: 1.1;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        .main-subtitle {
-            font-size: 52px;
-            font-weight: 600;
-            color: #2E5C8A;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* Linha decorativa */
-        .divider {
-            width: 200px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #DB7093, transparent);
-            margin: 25px auto;
-            border-radius: 2px;
-        }
-
-        .secondary-text {
-            font-size: 20px;
-            font-weight: 500;
-            color: #555;
-            line-height: 1.6;
-            max-width: 600px;
-            margin: 20px 0;
-            letter-spacing: 0.5px;
-        }
-
-        /* Seal/Badge com benefícios */
-        .benefits-seal {
-            background: rgba(173, 216, 230, 0.2);
-            border: 2px solid #ADD8E6;
+        .logo-icon {
+            width: 54px; height: 54px;
+            background: linear-gradient(135deg, #FFD700, #FFC200);
             border-radius: 12px;
-            padding: 15px 25px;
-            margin: 20px 0;
-            font-size: 13px;
-            font-weight: 600;
-            color: #194478;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; font-weight: 900;
+            color: #2b0a3d;
+            font-style: italic;
+            letter-spacing: -1px;
+            box-shadow: 0 4px 18px rgba(255,210,0,.4);
+            flex-shrink: 0;
+        }
+        .logo-text-block { display: flex; flex-direction: column; }
+        .logo-name {
+            font-size: 22px; font-weight: 900;
+            color: #FFD700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .logo-sub {
+            font-size: 11px; font-weight: 600;
+            color: rgba(255,255,255,.75);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        /* ── FAIXA INCLINADA "ESTAMOS CONTRATANDO" ── */
+        .banner-hiring {
+            position: relative;
+            background: linear-gradient(92deg, #FFD700 0%, #FFC200 100%);
+            color: #1c0430;
+            font-size: 38px; font-weight: 900;
             letter-spacing: 1px;
             text-transform: uppercase;
-            line-height: 1.8;
-        }
-
-        /* Rodapé com informações de contato */
-        .footer {
-            width: 100%;
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(25, 68, 124, 0.2);
-        }
-
-        .footer-text {
-            font-size: 16px;
-            font-weight: 600;
-            color: #194478;
+            padding: 14px 28px 14px 20px;
+            line-height: 1.08;
             margin-bottom: 8px;
+            clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+            width: 490px;
+            box-shadow: 4px 6px 20px rgba(0,0,0,.35);
         }
 
-        .footer-contact {
-            font-size: 24px;
-            font-weight: 700;
-            color: #DB7093;
+        /* ── FAIXA ROXA "VISUAL MERCHANDISING" ── */
+        .banner-role {
+            background: linear-gradient(92deg, #7b2da0 0%, #5e1f82 100%);
+            color: #fff;
+            font-size: 32px; font-weight: 800;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 12px 28px 12px 20px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
+            width: 490px;
+            border-left: 6px solid #FFD700;
+            box-shadow: 4px 6px 20px rgba(0,0,0,.3);
+        }
+
+        /* ── SUBTÍTULO "Faça parte do TIME MISS BIA" ── */
+        .slogan {
+            font-size: 19px; font-weight: 700;
+            color: #f5d0ff;
+            letter-spacing: 0.5px;
+            margin-bottom: 22px;
+            padding-left: 4px;
+        }
+        .slogan span {
+            color: #FFD700;
+            font-weight: 900;
+        }
+
+        /* ── BLOCO BENEFÍCIOS ── */
+        .benefits-block {
+            background: rgba(255,255,255,.06);
+            border: 1.5px solid rgba(255,210,0,.3);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            width: 490px;
+        }
+        .benefits-title {
+            font-size: 13px; font-weight: 800;
+            color: #FFD700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .benefits-list {
+            display: flex; flex-wrap: wrap; gap: 7px 10px;
+        }
+        .benefit-item {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 13.5px; font-weight: 600;
+            color: #fff;
+        }
+        .benefit-dot {
+            width: 7px; height: 7px;
+            background: #FFD700;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ── BLOCO AMARELO MODELO / ATUAÇÃO ── */
+        .info-yellow {
+            background: linear-gradient(135deg, #FFD700, #FFC200);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 16px;
+            width: 490px;
+            box-shadow: 0 4px 18px rgba(255,200,0,.3);
+        }
+        .info-yellow-row {
+            display: flex; flex-direction: column;
+            margin-bottom: 6px;
+        }
+        .info-yellow-row:last-child { margin-bottom: 0; }
+        .info-label {
+            font-size: 10px; font-weight: 800;
+            color: #3a0a55;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .info-value {
+            font-size: 15px; font-weight: 800;
+            color: #1c0430;
+            letter-spacing: 0.3px;
+        }
+
+        /* ── BLOCO INFERIOR ENVIAR CURRÍCULO ── */
+        .cta-block {
+            background: rgba(123,45,160,.55);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            padding: 13px 18px;
+            width: 490px;
+            display: flex; align-items: center; gap: 14px;
+        }
+        .cta-icon {
+            font-size: 26px; flex-shrink: 0;
+        }
+        .cta-text { display: flex; flex-direction: column; }
+        .cta-label {
+            font-size: 12px; font-weight: 700;
+            color: rgba(255,255,255,.8);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .cta-phone {
+            font-size: 26px; font-weight: 900;
+            color: #FFD700;
             letter-spacing: 1px;
         }
 
-        /* Elementos decorativos flutuantes */
-        .accent-circle-1 {
+        /* ── SELO "INÍCIO IMEDIATO!" ── */
+        .seal {
             position: absolute;
-            width: 150px;
-            height: 150px;
+            right: 46px; top: 44px;
+            width: 128px; height: 128px;
+            z-index: 30;
+        }
+        .seal-circle {
+            width: 100%; height: 100%;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(25, 68, 124, 0.1), transparent);
-            top: 5%;
-            right: 5%;
-            pointer-events: none;
+            background: radial-gradient(circle at 40% 40%, #ff3366, #c0003c);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            box-shadow: 0 6px 28px rgba(200,0,60,.55), 0 0 0 4px rgba(255,50,100,.25);
+            border: 3px solid rgba(255,255,255,.25);
+            text-align: center;
+            padding: 10px;
+        }
+        .seal-line1 {
+            font-size: 14px; font-weight: 900;
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .seal-line2 {
+            font-size: 18px; font-weight: 900;
+            color: #FFD700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-top: 3px;
+        }
+        .seal-line3 {
+            font-size: 11px; font-weight: 700;
+            color: rgba(255,255,255,.9);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 2px;
         }
 
-        .accent-circle-2 {
+        /* ── LINHA DECORATIVA VERTICAL ── */
+        .vert-line {
             position: absolute;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(219, 112, 147, 0.08), transparent);
-            bottom: 10%;
-            left: 5%;
-            pointer-events: none;
+            left: 555px; top: 80px; bottom: 80px;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, rgba(255,210,0,.3) 30%, rgba(255,210,0,.3) 70%, transparent);
+            z-index: 15;
         }
 
-        /* Responsividade para preview */
-        @media (max-width: 1080px) {
-            .container {
-                width: 100vw;
-                height: 100vw;
-                max-width: 1080px;
-                max-height: 1080px;
-            }
-
-            .content-wrapper {
-                padding: 40px 30px;
-            }
-
-            .main-title {
-                font-size: 54px;
-            }
-
-            .main-subtitle {
-                font-size: 38px;
-            }
-
-            .secondary-text {
-                font-size: 16px;
-            }
+        /* ── PARTÍCULAS BRILHANTES ── */
+        .sparkle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,220,80,.8);
+            z-index: 8;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: .2; transform: scale(.8); }
+            50%       { opacity: .9; transform: scale(1.2); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="background">
-            <div class="pattern-overlay"></div>
-            
-            <!-- Elementos decorativos desfocados -->
-            <div class="deco-element deco-left"></div>
-            <div class="deco-element deco-right"></div>
-            
-            <!-- Círculos acentuados -->
-            <div class="accent-circle-1"></div>
-            <div class="accent-circle-2"></div>
-            
-            <!-- Conteúdo principal -->
-            <div class="content-wrapper">
-                <!-- Header com logo -->
-                <div class="header">
-                    <div class="logo">MISS BIA</div>
-                    <div class="logo-underline"></div>
-                </div>
-                
-                <!-- Conteúdo central -->
-                <div class="main-content">
-                    <div class="badge">🎯 Vaga Aberta</div>
-                    
-                    <div>
-                        <h1 class="main-title">Visual</h1>
-                        <h2 class="main-subtitle">Merchandising</h2>
-                    </div>
-                    
-                    <div class="divider"></div>
-                    
-                    <p class="secondary-text">Faça parte do time MISS BIA</p>
-                    <p class="secondary-text">Atuação presencial nas nossas 21 lojas</p>
-                    
-                    <div class="benefits-seal">
-                        ✓ CLT + Benefícios + Plano de Crescimento
-                    </div>
-                </div>
-                
-                <!-- Rodapé com contato -->
-                <div class="footer">
-                    <div class="footer-text">Envie seu currículo para:</div>
-                    <div class="footer-contact">11 95117-0077</div>
-                </div>
+<div class="canvas">
+
+    <!-- FUNDO -->
+    <div class="bg-gradient"></div>
+    <div class="bg-texture"></div>
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+    <div class="bg-glow-3"></div>
+
+    <!-- Partículas -->
+    <div class="sparkle" style="width:5px;height:5px;left:610px;top:120px;animation-delay:.4s"></div>
+    <div class="sparkle" style="width:4px;height:4px;left:680px;top:300px;animation-delay:1.2s"></div>
+    <div class="sparkle" style="width:6px;height:6px;left:750px;top:180px;animation-delay:.8s"></div>
+    <div class="sparkle" style="width:3px;height:3px;left:820px;top:450px;animation-delay:2s"></div>
+    <div class="sparkle" style="width:5px;height:5px;left:640px;top:600px;animation-delay:1.5s"></div>
+    <div class="sparkle" style="width:4px;height:4px;left:900px;top:250px;animation-delay:.2s"></div>
+    <div class="sparkle" style="width:3px;height:3px;left:590px;top:780px;animation-delay:2.5s"></div>
+
+    <!-- HALO PESSOA -->
+    <div class="person-halo"></div>
+
+    <!-- FIGURA PROFISSIONAL (silhueta SVG estilizada) -->
+    <div class="person-area">
+        <svg class="person-svg" viewBox="0 0 510 870" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
+            <defs>
+                <radialGradient id="gSkin" cx="50%" cy="35%" r="50%">
+                    <stop offset="0%" stop-color="#f5c5a0"/>
+                    <stop offset="100%" stop-color="#e0a070"/>
+                </radialGradient>
+                <radialGradient id="gOutfit" cx="40%" cy="30%" r="60%">
+                    <stop offset="0%" stop-color="#8b3fbe"/>
+                    <stop offset="100%" stop-color="#4a1070"/>
+                </radialGradient>
+                <radialGradient id="gHair" cx="50%" cy="10%" r="55%">
+                    <stop offset="0%" stop-color="#3a1a00"/>
+                    <stop offset="100%" stop-color="#1a0800"/>
+                </radialGradient>
+                <filter id="softGlow">
+                    <feGaussianBlur stdDeviation="3" result="blur"/>
+                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                </filter>
+                <linearGradient id="legGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#2d0a40"/>
+                    <stop offset="100%" stop-color="#1a0428"/>
+                </linearGradient>
+                <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(100,20,150,.15)"/>
+                    <stop offset="100%" stop-color="transparent"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Reflexo no chão -->
+            <ellipse cx="255" cy="855" rx="160" ry="18" fill="rgba(180,80,220,.12)"/>
+
+            <!-- Pernas / calça -->
+            <rect x="195" y="600" width="56" height="260" rx="20" fill="url(#legGrad)"/>
+            <rect x="259" y="600" width="56" height="260" rx="20" fill="url(#legGrad)"/>
+
+            <!-- Sapatos -->
+            <ellipse cx="223" cy="855" rx="36" ry="12" fill="#1a0030"/>
+            <ellipse cx="287" cy="855" rx="36" ry="12" fill="#1a0030"/>
+            <path d="M190 842 Q200 820 240 820 L240 858 Q210 862 190 842Z" fill="#2a0050"/>
+            <path d="M254 842 Q264 820 304 820 L304 858 Q274 862 254 842Z" fill="#2a0050"/>
+            <!-- Salto -->
+            <rect x="218" y="850" width="10" height="20" rx="3" fill="#150025"/>
+            <rect x="282" y="850" width="10" height="20" rx="3" fill="#150025"/>
+
+            <!-- Saia / vestido parte inferior -->
+            <path d="M175 430 Q200 600 190 610 L320 610 Q310 600 335 430Z" fill="url(#gOutfit)" opacity=".95"/>
+
+            <!-- Blazer / corpo -->
+            <path d="M175 250 Q160 310 155 430 L345 430 Q340 310 325 250 Q300 240 255 238 Q210 240 175 250Z"
+                  fill="url(#gOutfit)"/>
+            <!-- Lapela do blazer -->
+            <path d="M255 258 L240 310 L255 340 L270 310 Z" fill="rgba(255,255,255,.12)"/>
+            <!-- Camisa interior -->
+            <path d="M240 258 Q255 290 270 258" fill="none" stroke="rgba(255,220,80,.5)" stroke-width="2"/>
+
+            <!-- Pescoço -->
+            <rect x="240" y="215" width="30" height="45" rx="12" fill="url(#gSkin)"/>
+
+            <!-- Cabeça -->
+            <ellipse cx="255" cy="175" rx="68" ry="80" fill="url(#gSkin)" filter="url(#softGlow)"/>
+
+            <!-- Cabelo -->
+            <path d="M190 145 Q195 85 255 78 Q315 85 320 145 Q305 110 255 108 Q205 110 190 145Z"
+                  fill="url(#gHair)"/>
+            <path d="M188 150 Q175 200 182 240 Q192 210 195 165Z" fill="url(#gHair)"/>
+            <path d="M322 150 Q335 200 328 240 Q318 210 315 165Z" fill="url(#gHair)"/>
+            <!-- Mechas suaves -->
+            <path d="M255 108 Q230 115 210 140 Q225 120 255 115Z" fill="#4a2200" opacity=".6"/>
+
+            <!-- Olhos sorridentes -->
+            <path d="M228 168 Q235 160 242 168" fill="none" stroke="#2a1000" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M268 168 Q275 160 282 168" fill="none" stroke="#2a1000" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Cílios / sobrancelha -->
+            <path d="M226 162 Q235 156 244 162" fill="none" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
+            <path d="M266 162 Q275 156 284 162" fill="none" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Nariz sutil -->
+            <path d="M252 182 Q255 190 258 182" fill="none" stroke="rgba(100,50,20,.4)" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Sorriso -->
+            <path d="M237 200 Q255 215 273 200" fill="none" stroke="#c06040" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M237 200 Q255 218 273 200" fill="rgba(220,100,80,.35)"/>
+
+            <!-- Blusher suave -->
+            <ellipse cx="230" cy="196" rx="12" ry="7" fill="rgba(220,100,100,.18)"/>
+            <ellipse cx="280" cy="196" rx="12" ry="7" fill="rgba(220,100,100,.18)"/>
+
+            <!-- Brinco -->
+            <circle cx="188" cy="185" r="5" fill="#FFD700"/>
+            <line x1="188" y1="190" x2="188" y2="202" stroke="#FFD700" stroke-width="2"/>
+            <circle cx="188" cy="205" r="4" fill="#FFD700" opacity=".8"/>
+
+            <!-- Braço esquerdo (posado, segurando algo) -->
+            <path d="M175 265 Q140 330 130 420 Q140 440 162 435 Q170 360 200 310 Q190 285 175 265Z"
+                  fill="url(#gOutfit)"/>
+            <!-- Mão esquerda -->
+            <ellipse cx="128" cy="430" rx="22" ry="16" fill="url(#gSkin)" transform="rotate(-20,128,430)"/>
+
+            <!-- Braço direito (levemente aberto, sorridente) -->
+            <path d="M325 265 Q365 330 370 420 Q360 442 338 436 Q330 360 300 310 Q310 285 325 265Z"
+                  fill="url(#gOutfit)"/>
+            <!-- Mão direita -->
+            <ellipse cx="372" cy="430" rx="22" ry="16" fill="url(#gSkin)" transform="rotate(20,372,430)"/>
+
+            <!-- Crachá / name tag -->
+            <rect x="262" y="320" width="52" height="36" rx="4" fill="rgba(255,210,0,.8)"/>
+            <rect x="264" y="326" width="48" height="5" rx="2" fill="#2b0a3d"/>
+            <rect x="264" y="334" width="35" height="4" rx="2" fill="#2b0a3d" opacity=".5"/>
+
+            <!-- Sombra nos pés -->
+            <ellipse cx="255" cy="858" rx="140" ry="10" fill="rgba(0,0,0,.25)"/>
+        </svg>
+    </div>
+
+    <!-- LINHA DIVISÓRIA VERTICAL SUTIL -->
+    <div class="vert-line"></div>
+
+    <!-- COLUNA ESQUERDA -->
+    <div class="left-col">
+
+        <!-- LOGO -->
+        <div class="logo-wrap">
+            <div class="logo-icon">MB</div>
+            <div class="logo-text-block">
+                <div class="logo-name">MISS BIA</div>
+                <div class="logo-sub">LINGERIE</div>
             </div>
         </div>
+
+        <!-- FAIXA AMARELA: ESTAMOS CONTRATANDO -->
+        <div class="banner-hiring">
+            ESTAMOS<br>CONTRATANDO!
+        </div>
+
+        <!-- FAIXA ROXA: VISUAL MERCHANDISING -->
+        <div class="banner-role">
+            VISUAL<br>MERCHANDISING
+        </div>
+
+        <!-- SLOGAN -->
+        <div class="slogan">
+            Faça parte do <span>TIME MISS BIA</span>
+        </div>
+
+        <!-- BENEFÍCIOS -->
+        <div class="benefits-block">
+            <div class="benefits-title">Benefícios:</div>
+            <div class="benefits-list">
+                <div class="benefit-item"><div class="benefit-dot"></div>CLT</div>
+                <div class="benefit-item"><div class="benefit-dot"></div>Plano Odontológico</div>
+                <div class="benefit-item"><div class="benefit-dot"></div>Vale-Transporte</div>
+                <div class="benefit-item"><div class="benefit-dot"></div>Convênio SESC</div>
+                <div class="benefit-item"><div class="benefit-dot"></div>Plano de Crescimento</div>
+            </div>
+        </div>
+
+        <!-- MODELO DE TRABALHO / ATUAÇÃO -->
+        <div class="info-yellow">
+            <div class="info-yellow-row">
+                <div class="info-label">Modelo de Trabalho:</div>
+                <div class="info-value">100% PRESENCIAL</div>
+            </div>
+            <div style="height:8px;border-top:1px solid rgba(44,0,80,.2);margin:6px 0"></div>
+            <div class="info-yellow-row">
+                <div class="info-label">Atuação:</div>
+                <div class="info-value">OSASCO – ITAPEVI</div>
+            </div>
+        </div>
+
+        <!-- CTA CONTATO -->
+        <div class="cta-block">
+            <div class="cta-icon">💬</div>
+            <div class="cta-text">
+                <div class="cta-label">Envie seu Currículo</div>
+                <div class="cta-phone">11 95117-0077</div>
+            </div>
+        </div>
+
     </div>
+
+    <!-- SELO INÍCIO IMEDIATO -->
+    <div class="seal">
+        <div class="seal-circle">
+            <div class="seal-line1">INÍCIO</div>
+            <div class="seal-line2">IMEDIATO!</div>
+            <div class="seal-line3">★ ★ ★</div>
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
