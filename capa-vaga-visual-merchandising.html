@@ -1,548 +1,573 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vaga Visual Merchandising - MISS BIA LINGERIE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<title>Vaga Visual Merchandising – MISS BIA LINGERIE</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        body {
-            font-family: 'Montserrat', 'Segoe UI', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: #1a1a2e;
-        }
+body{
+  font-family:'Montserrat','Arial Black',sans-serif;
+  background:#222;
+  display:flex;justify-content:center;align-items:center;min-height:100vh;
+}
 
-        /* ── CANVAS 1080×1080 ── */
-        .canvas {
-            width: 1080px;
-            height: 1080px;
-            position: relative;
-            overflow: hidden;
-            background: #2b0a3d;
-            box-shadow: 0 20px 60px rgba(0,0,0,.6);
-        }
+/* ── CANVAS 1080×1080 ── */
+.card{
+  width:1080px;height:1080px;
+  position:relative;overflow:hidden;
+  background:#1a0535;
+}
 
-        /* ── FUNDO: gradiente roxo-magenta escuro ── */
-        .bg-gradient {
-            position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 70% 60% at 75% 55%, rgba(90,10,110,.85) 0%, transparent 70%),
-                radial-gradient(ellipse 50% 70% at 20% 40%, rgba(60,5,80,.9) 0%, transparent 65%),
-                linear-gradient(150deg, #1c0430 0%, #2e0848 35%, #3a0a55 60%, #1c0430 100%);
-        }
+/* ═══════════════════════════════════════
+   FUNDO: gradiente roxo-magenta + textura
+   ═══════════════════════════════════════ */
+.bg{
+  position:absolute;inset:0;
+  background:linear-gradient(170deg,#0d001f 0%,#22054a 40%,#2e0654 70%,#1a0535 100%);
+}
+/* pontos de brilho de vitrine */
+.bg::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 50% at 75% 35%,rgba(180,40,220,.25) 0%,transparent 65%),
+    radial-gradient(ellipse 40% 60% at 85% 80%,rgba(100,10,160,.20) 0%,transparent 70%);
+}
 
-        /* Textura de pontos discretos */
-        .bg-texture {
-            position: absolute; inset: 0;
-            background-image: radial-gradient(circle, rgba(255,255,255,.03) 1px, transparent 1px);
-            background-size: 28px 28px;
-        }
+/* ═══════════════════════════════════════
+   FOTO / SILHUETA – ocupa lado direito,
+   do topo até ~68% da altura
+   ═══════════════════════════════════════ */
+.photo-area{
+  position:absolute;
+  right:0;top:0;
+  width:520px;height:700px;
+  z-index:5;
+  /* degradê que funde a foto com o fundo nas bordas */
+  -webkit-mask-image:
+    linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%),
+    linear-gradient(to top,  rgba(0,0,0,0) 0%,  rgba(0,0,0,1) 18%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to left, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%),
+    linear-gradient(to top,  rgba(0,0,0,0) 0%,  rgba(0,0,0,1) 18%);
+  mask-composite:intersect;
+}
 
-        /* Brilhos de vitrine desfocados */
-        .bg-glow-1 {
-            position: absolute;
-            width: 420px; height: 420px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(200,80,220,.18) 0%, transparent 70%);
-            top: -80px; right: 80px;
-            filter: blur(40px);
-        }
-        .bg-glow-2 {
-            position: absolute;
-            width: 300px; height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,210,0,.10) 0%, transparent 70%);
-            bottom: 60px; left: 30px;
-            filter: blur(50px);
-        }
-        .bg-glow-3 {
-            position: absolute;
-            width: 250px; height: 500px;
-            background: linear-gradient(180deg, rgba(255,200,255,.07), transparent);
-            top: 0; right: 260px;
-            filter: blur(30px);
-        }
+/* Silhueta SVG de profissional feminina de lingerie */
+.photo-area svg{width:100%;height:100%;}
 
-        /* ── SILHUETA / FOTO PROFISSIONAL (lado direito) ── */
-        .person-area {
-            position: absolute;
-            right: 0; bottom: 0;
-            width: 510px; height: 870px;
-            z-index: 5;
-        }
+/* halo de luz atrás da figura */
+.photo-halo{
+  position:absolute;
+  right:20px;top:30px;
+  width:440px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(210,90,255,.18) 0%,transparent 65%);
+  filter:blur(40px);
+  z-index:4;
+}
 
-        /* Silhueta vetorial SVG embutida de profissional feminina */
-        .person-svg {
-            position: absolute;
-            bottom: 0; right: 0;
-            width: 100%; height: 100%;
-        }
+/* ═══════════════════════════════════════
+   FAIXA SUPERIOR AZUL (acima do amarelo)
+   ═══════════════════════════════════════ */
+.top-bar{
+  position:absolute;
+  top:0;left:0;right:0;
+  height:64px;
+  background:#0a1a3a;
+  display:flex;align-items:center;
+  padding:0 36px;
+  gap:16px;
+  z-index:30;
+}
+.logo-badge{
+  background:linear-gradient(135deg,#FFD700,#FFC000);
+  border-radius:8px;
+  padding:4px 12px;
+  font-size:18px;font-weight:900;
+  color:#0a1a3a;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-style:italic;
+}
+.logo-name{
+  font-size:16px;font-weight:900;
+  color:#FFD700;letter-spacing:5px;
+  text-transform:uppercase;
+}
+.logo-sub{
+  font-size:9px;font-weight:700;
+  color:rgba(255,255,255,.6);
+  letter-spacing:5px;
+  text-transform:uppercase;
+  display:block;
+  margin-top:-2px;
+}
 
-        /* Halos de luz atrás da figura */
-        .person-halo {
-            position: absolute;
-            width: 380px; height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(ellipse, rgba(220,100,255,.15) 0%, transparent 65%);
-            bottom: 0; right: 50px;
-            filter: blur(35px);
-            z-index: 4;
-        }
+/* ═══════════════════════════════════════
+   FAIXA AMARELA INCLINADA "ESTAMOS CONTRATANDO"
+   ═══════════════════════════════════════ */
+.banner-hiring{
+  position:absolute;
+  top:64px; left:0;
+  width:560px;
+  z-index:25;
+}
+.banner-hiring-inner{
+  background:#FFD700;
+  color:#0a1a3a;
+  font-size:50px;font-weight:900;
+  text-transform:uppercase;
+  line-height:.98;
+  padding:22px 50px 22px 38px;
+  clip-path:polygon(0 0,100% 0,91% 100%,0 100%);
+  letter-spacing:-0.5px;
+  position:relative;
+}
+/* listras de aceleração (raios) no canto superior direito */
+.banner-hiring-inner::after{
+  content:'';
+  position:absolute;
+  top:-18px;right:40px;
+  width:60px;height:50px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      #FFD700 0px,#FFD700 6px,
+      transparent 6px,transparent 14px
+    );
+  clip-path:polygon(30% 0%,100% 0%,70% 100%,0% 100%);
+}
 
-        /* ── COLUNA ESQUERDA DE TEXTO ── */
-        .left-col {
-            position: absolute;
-            left: 48px; top: 0; bottom: 0;
-            width: 570px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            padding-top: 44px;
-            z-index: 20;
-        }
+/* ═══════════════════════════════════════
+   NOME DA VAGA
+   ═══════════════════════════════════════ */
+.job-title{
+  position:absolute;
+  top:230px;left:36px;
+  z-index:20;
+  line-height:.92;
+}
+.job-title-main{
+  font-size:106px;font-weight:900;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:-2px;
+  display:block;
+  text-shadow:3px 4px 18px rgba(0,0,0,.6);
+}
+.job-title-sub{
+  display:inline-block;
+  font-size:30px;font-weight:700;
+  font-style:italic;
+  color:#FFD700;
+  margin-top:8px;
+  letter-spacing:.5px;
+}
 
-        /* ── LOGO TOPO ── */
-        .logo-wrap {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 30px;
-        }
-        .logo-icon {
-            width: 54px; height: 54px;
-            background: linear-gradient(135deg, #FFD700, #FFC200);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 22px; font-weight: 900;
-            color: #2b0a3d;
-            font-style: italic;
-            letter-spacing: -1px;
-            box-shadow: 0 4px 18px rgba(255,210,0,.4);
-            flex-shrink: 0;
-        }
-        .logo-text-block { display: flex; flex-direction: column; }
-        .logo-name {
-            font-size: 22px; font-weight: 900;
-            color: #FFD700;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-        .logo-sub {
-            font-size: 11px; font-weight: 600;
-            color: rgba(255,255,255,.75);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-        }
+/* ═══════════════════════════════════════
+   COLUNA ESQUERDA – BENEFÍCIOS
+   ═══════════════════════════════════════ */
+.benefits-section{
+  position:absolute;
+  top:510px;left:36px;
+  width:510px;
+  z-index:20;
+}
+.benefits-title{
+  font-size:16px;font-weight:800;
+  color:#FFD700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.benefits-title .icon{font-size:20px;}
 
-        /* ── FAIXA INCLINADA "ESTAMOS CONTRATANDO" ── */
-        .banner-hiring {
-            position: relative;
-            background: linear-gradient(92deg, #FFD700 0%, #FFC200 100%);
-            color: #1c0430;
-            font-size: 38px; font-weight: 900;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            padding: 14px 28px 14px 20px;
-            line-height: 1.08;
-            margin-bottom: 8px;
-            clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
-            width: 490px;
-            box-shadow: 4px 6px 20px rgba(0,0,0,.35);
-        }
+.benefit-row{
+  display:flex;align-items:center;
+  gap:14px;
+  margin-bottom:11px;
+}
+.benefit-icon-box{
+  width:42px;height:42px;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  border:1.5px solid rgba(255,210,0,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+}
+.benefit-text{
+  font-size:18px;font-weight:700;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
 
-        /* ── FAIXA ROXA "VISUAL MERCHANDISING" ── */
-        .banner-role {
-            background: linear-gradient(92deg, #7b2da0 0%, #5e1f82 100%);
-            color: #fff;
-            font-size: 32px; font-weight: 800;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            padding: 12px 28px 12px 20px;
-            line-height: 1.1;
-            margin-bottom: 18px;
-            clip-path: polygon(0 0, 100% 0, 96% 100%, 0 100%);
-            width: 490px;
-            border-left: 6px solid #FFD700;
-            box-shadow: 4px 6px 20px rgba(0,0,0,.3);
-        }
+/* ═══════════════════════════════════════
+   COLUNA DIREITA BAIXA – INFO AMARELA
+   ═══════════════════════════════════════ */
+.info-col{
+  position:absolute;
+  top:540px;right:36px;
+  width:440px;
+  z-index:20;
+  display:flex;flex-direction:column;gap:16px;
+}
 
-        /* ── SUBTÍTULO "Faça parte do TIME MISS BIA" ── */
-        .slogan {
-            font-size: 19px; font-weight: 700;
-            color: #f5d0ff;
-            letter-spacing: 0.5px;
-            margin-bottom: 22px;
-            padding-left: 4px;
-        }
-        .slogan span {
-            color: #FFD700;
-            font-weight: 900;
-        }
+/* bloco salário */
+.salary-box{
+  background:#FFD700;
+  border-radius:14px;
+  padding:18px 22px;
+  box-shadow:0 6px 24px rgba(255,200,0,.35);
+}
+.salary-label{
+  font-size:12px;font-weight:800;
+  color:#1a0535;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  display:flex;align-items:center;gap:6px;
+}
+.salary-label .ico{font-size:16px;}
+.salary-value{
+  font-size:54px;font-weight:900;
+  color:#0a1a3a;
+  letter-spacing:-1px;
+  line-height:1;
+  margin-top:4px;
+}
+.salary-extra{
+  font-size:20px;font-weight:800;
+  color:#0a1a3a;
+  text-transform:uppercase;
+  margin-top:4px;
+}
 
-        /* ── BLOCO BENEFÍCIOS ── */
-        .benefits-block {
-            background: rgba(255,255,255,.06);
-            border: 1.5px solid rgba(255,210,0,.3);
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            width: 490px;
-        }
-        .benefits-title {
-            font-size: 13px; font-weight: 800;
-            color: #FFD700;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .benefits-list {
-            display: flex; flex-wrap: wrap; gap: 7px 10px;
-        }
-        .benefit-item {
-            display: flex; align-items: center; gap: 6px;
-            font-size: 13.5px; font-weight: 600;
-            color: #fff;
-        }
-        .benefit-dot {
-            width: 7px; height: 7px;
-            background: #FFD700;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
+/* bloco local */
+.local-box{
+  background:rgba(255,255,255,.07);
+  border:1.5px solid rgba(255,210,0,.35);
+  border-radius:14px;
+  padding:14px 18px;
+  display:flex;align-items:flex-start;gap:12px;
+}
+.local-pin{font-size:28px;margin-top:2px;}
+.local-content{}
+.local-label{
+  font-size:11px;font-weight:800;
+  color:#FFD700;letter-spacing:3px;
+  text-transform:uppercase;
+}
+.local-value{
+  font-size:20px;font-weight:800;
+  color:#fff;
+  line-height:1.2;
+}
+.local-detail{
+  font-size:13px;font-weight:500;
+  color:rgba(255,255,255,.65);
+  margin-top:2px;
+}
 
-        /* ── BLOCO AMARELO MODELO / ATUAÇÃO ── */
-        .info-yellow {
-            background: linear-gradient(135deg, #FFD700, #FFC200);
-            border-radius: 10px;
-            padding: 14px 18px;
-            margin-bottom: 16px;
-            width: 490px;
-            box-shadow: 0 4px 18px rgba(255,200,0,.3);
-        }
-        .info-yellow-row {
-            display: flex; flex-direction: column;
-            margin-bottom: 6px;
-        }
-        .info-yellow-row:last-child { margin-bottom: 0; }
-        .info-label {
-            font-size: 10px; font-weight: 800;
-            color: #3a0a55;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .info-value {
-            font-size: 15px; font-weight: 800;
-            color: #1c0430;
-            letter-spacing: 0.3px;
-        }
+/* ═══════════════════════════════════════
+   RODAPÉ
+   ═══════════════════════════════════════ */
+.footer{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:120px;
+  background:#0a1a3a;
+  display:flex;align-items:center;
+  padding:0 36px;
+  gap:0;
+  z-index:30;
+}
 
-        /* ── BLOCO INFERIOR ENVIAR CURRÍCULO ── */
-        .cta-block {
-            background: rgba(123,45,160,.55);
-            border: 2px solid #FFD700;
-            border-radius: 10px;
-            padding: 13px 18px;
-            width: 490px;
-            display: flex; align-items: center; gap: 14px;
-        }
-        .cta-icon {
-            font-size: 26px; flex-shrink: 0;
-        }
-        .cta-text { display: flex; flex-direction: column; }
-        .cta-label {
-            font-size: 12px; font-weight: 700;
-            color: rgba(255,255,255,.8);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .cta-phone {
-            font-size: 26px; font-weight: 900;
-            color: #FFD700;
-            letter-spacing: 1px;
-        }
+/* WhatsApp block */
+.wa-block{
+  display:flex;align-items:center;
+  gap:16px;
+  flex:1;
+}
+.wa-icon{
+  width:62px;height:62px;
+  background:#25D366;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;
+  flex-shrink:0;
+  box-shadow:0 4px 16px rgba(37,211,102,.4);
+}
+.wa-text{}
+.wa-label{
+  font-size:13px;font-weight:800;
+  color:#FFD700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+.wa-number{
+  font-size:30px;font-weight:900;
+  color:#fff;
+  letter-spacing:.5px;
+}
 
-        /* ── SELO "INÍCIO IMEDIATO!" ── */
-        .seal {
-            position: absolute;
-            right: 46px; top: 44px;
-            width: 128px; height: 128px;
-            z-index: 30;
-        }
-        .seal-circle {
-            width: 100%; height: 100%;
-            border-radius: 50%;
-            background: radial-gradient(circle at 40% 40%, #ff3366, #c0003c);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            box-shadow: 0 6px 28px rgba(200,0,60,.55), 0 0 0 4px rgba(255,50,100,.25);
-            border: 3px solid rgba(255,255,255,.25);
-            text-align: center;
-            padding: 10px;
-        }
-        .seal-line1 {
-            font-size: 14px; font-weight: 900;
-            color: #fff;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1;
-        }
-        .seal-line2 {
-            font-size: 18px; font-weight: 900;
-            color: #FFD700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-top: 3px;
-        }
-        .seal-line3 {
-            font-size: 11px; font-weight: 700;
-            color: rgba(255,255,255,.9);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: 2px;
-        }
+/* Divisor */
+.footer-divider{
+  width:2px;height:70px;
+  background:rgba(255,255,255,.15);
+  margin:0 36px;
+}
 
-        /* ── LINHA DECORATIVA VERTICAL ── */
-        .vert-line {
-            position: absolute;
-            left: 555px; top: 80px; bottom: 80px;
-            width: 2px;
-            background: linear-gradient(180deg, transparent, rgba(255,210,0,.3) 30%, rgba(255,210,0,.3) 70%, transparent);
-            z-index: 15;
-        }
+/* Botão INÍCIO IMEDIATO */
+.inicio-btn{
+  background:linear-gradient(135deg,#e8002a,#b00020);
+  border-radius:16px;
+  padding:18px 30px;
+  display:flex;align-items:center;gap:14px;
+  box-shadow:0 6px 24px rgba(200,0,40,.5);
+  min-width:280px;
+  justify-content:center;
+}
+.inicio-icon{font-size:36px;}
+.inicio-text{
+  font-size:30px;font-weight:900;
+  color:#fff;
+  text-transform:uppercase;
+  line-height:1;
+  letter-spacing:.5px;
+}
 
-        /* ── PARTÍCULAS BRILHANTES ── */
-        .sparkle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255,220,80,.8);
-            z-index: 8;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: .2; transform: scale(.8); }
-            50%       { opacity: .9; transform: scale(1.2); }
-        }
-    </style>
+/* ═══════════════════════════════════════
+   SELO LATERAL (opcional – modelo tem
+   elementos de acento no canto)
+   ═══════════════════════════════════════ */
+.accent-lines{
+  position:absolute;
+  top:62px;right:0;
+  width:80px;height:80px;
+  z-index:28;
+  overflow:hidden;
+}
+.accent-lines svg{width:100%;height:100%;}
+
+</style>
 </head>
 <body>
-<div class="canvas">
 
-    <!-- FUNDO -->
-    <div class="bg-gradient"></div>
-    <div class="bg-texture"></div>
-    <div class="bg-glow-1"></div>
-    <div class="bg-glow-2"></div>
-    <div class="bg-glow-3"></div>
+<div class="card">
 
-    <!-- Partículas -->
-    <div class="sparkle" style="width:5px;height:5px;left:610px;top:120px;animation-delay:.4s"></div>
-    <div class="sparkle" style="width:4px;height:4px;left:680px;top:300px;animation-delay:1.2s"></div>
-    <div class="sparkle" style="width:6px;height:6px;left:750px;top:180px;animation-delay:.8s"></div>
-    <div class="sparkle" style="width:3px;height:3px;left:820px;top:450px;animation-delay:2s"></div>
-    <div class="sparkle" style="width:5px;height:5px;left:640px;top:600px;animation-delay:1.5s"></div>
-    <div class="sparkle" style="width:4px;height:4px;left:900px;top:250px;animation-delay:.2s"></div>
-    <div class="sparkle" style="width:3px;height:3px;left:590px;top:780px;animation-delay:2.5s"></div>
+  <!-- FUNDO -->
+  <div class="bg"></div>
 
-    <!-- HALO PESSOA -->
-    <div class="person-halo"></div>
+  <!-- HALO atrás da figura -->
+  <div class="photo-halo"></div>
 
-    <!-- FIGURA PROFISSIONAL (silhueta SVG estilizada) -->
-    <div class="person-area">
-        <svg class="person-svg" viewBox="0 0 510 870" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-            <defs>
-                <radialGradient id="gSkin" cx="50%" cy="35%" r="50%">
-                    <stop offset="0%" stop-color="#f5c5a0"/>
-                    <stop offset="100%" stop-color="#e0a070"/>
-                </radialGradient>
-                <radialGradient id="gOutfit" cx="40%" cy="30%" r="60%">
-                    <stop offset="0%" stop-color="#8b3fbe"/>
-                    <stop offset="100%" stop-color="#4a1070"/>
-                </radialGradient>
-                <radialGradient id="gHair" cx="50%" cy="10%" r="55%">
-                    <stop offset="0%" stop-color="#3a1a00"/>
-                    <stop offset="100%" stop-color="#1a0800"/>
-                </radialGradient>
-                <filter id="softGlow">
-                    <feGaussianBlur stdDeviation="3" result="blur"/>
-                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-                </filter>
-                <linearGradient id="legGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#2d0a40"/>
-                    <stop offset="100%" stop-color="#1a0428"/>
-                </linearGradient>
-                <linearGradient id="floorGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="rgba(100,20,150,.15)"/>
-                    <stop offset="100%" stop-color="transparent"/>
-                </linearGradient>
-            </defs>
+  <!-- FOTO / SILHUETA (lado direito) -->
+  <div class="photo-area">
+    <svg viewBox="0 0 520 700" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sk" cx="50%" cy="35%" r="55%">
+          <stop offset="0%" stop-color="#f7c9a8"/>
+          <stop offset="100%" stop-color="#d4915c"/>
+        </radialGradient>
+        <linearGradient id="ou" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#8b35c0"/>
+          <stop offset="100%" stop-color="#4a0f80"/>
+        </linearGradient>
+        <radialGradient id="hr" cx="50%" cy="15%" r="55%">
+          <stop offset="0%" stop-color="#3a1a00"/>
+          <stop offset="100%" stop-color="#1a0800"/>
+        </radialGradient>
+        <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/>
+          <feComposite in="SourceGraphic" in2="b" operator="over"/>
+        </filter>
+      </defs>
 
-            <!-- Reflexo no chão -->
-            <ellipse cx="255" cy="855" rx="160" ry="18" fill="rgba(180,80,220,.12)"/>
+      <!-- Sombra nos pés -->
+      <ellipse cx="260" cy="692" rx="150" ry="12" fill="rgba(0,0,0,.3)"/>
 
-            <!-- Pernas / calça -->
-            <rect x="195" y="600" width="56" height="260" rx="20" fill="url(#legGrad)"/>
-            <rect x="259" y="600" width="56" height="260" rx="20" fill="url(#legGrad)"/>
+      <!-- Pernas / calça escura -->
+      <rect x="200" y="530" width="54" height="160" rx="22" fill="#200840"/>
+      <rect x="266" y="530" width="54" height="160" rx="22" fill="#200840"/>
 
-            <!-- Sapatos -->
-            <ellipse cx="223" cy="855" rx="36" ry="12" fill="#1a0030"/>
-            <ellipse cx="287" cy="855" rx="36" ry="12" fill="#1a0030"/>
-            <path d="M190 842 Q200 820 240 820 L240 858 Q210 862 190 842Z" fill="#2a0050"/>
-            <path d="M254 842 Q264 820 304 820 L304 858 Q274 862 254 842Z" fill="#2a0050"/>
-            <!-- Salto -->
-            <rect x="218" y="850" width="10" height="20" rx="3" fill="#150025"/>
-            <rect x="282" y="850" width="10" height="20" rx="3" fill="#150025"/>
+      <!-- Sapatos com salto -->
+      <path d="M198 680 Q208 660 248 660 L248 692 Q218 698 198 680Z" fill="#1a0030"/>
+      <path d="M264 680 Q274 660 314 660 L314 692 Q284 698 264 680Z" fill="#1a0030"/>
+      <rect x="225" y="686" width="9" height="18" rx="3" fill="#100020"/>
+      <rect x="291" y="686" width="9" height="18" rx="3" fill="#100020"/>
 
-            <!-- Saia / vestido parte inferior -->
-            <path d="M175 430 Q200 600 190 610 L320 610 Q310 600 335 430Z" fill="url(#gOutfit)" opacity=".95"/>
+      <!-- Vestido/saia -->
+      <path d="M185 400 Q200 530 198 540 L322 540 Q320 530 335 400Z" fill="url(#ou)" opacity=".97"/>
 
-            <!-- Blazer / corpo -->
-            <path d="M175 250 Q160 310 155 430 L345 430 Q340 310 325 250 Q300 240 255 238 Q210 240 175 250Z"
-                  fill="url(#gOutfit)"/>
-            <!-- Lapela do blazer -->
-            <path d="M255 258 L240 310 L255 340 L270 310 Z" fill="rgba(255,255,255,.12)"/>
-            <!-- Camisa interior -->
-            <path d="M240 258 Q255 290 270 258" fill="none" stroke="rgba(255,220,80,.5)" stroke-width="2"/>
+      <!-- Corpo/blazer -->
+      <path d="M185 220 Q168 285 162 400 L358 400 Q352 285 335 220 Q308 210 260 208 Q212 210 185 220Z"
+            fill="url(#ou)"/>
+      <!-- Lapela -->
+      <path d="M260 228 L244 285 L260 315 L276 285Z" fill="rgba(255,255,255,.10)"/>
+      <!-- Crachá/name tag -->
+      <rect x="268" y="290" width="55" height="38" rx="5" fill="rgba(255,210,0,.85)"/>
+      <rect x="270" y="297" width="51" height="6" rx="2" fill="#1a0535"/>
+      <rect x="270" y="307" width="38" height="5" rx="2" fill="#1a0535" opacity=".4"/>
 
-            <!-- Pescoço -->
-            <rect x="240" y="215" width="30" height="45" rx="12" fill="url(#gSkin)"/>
+      <!-- Pescoço -->
+      <rect x="244" y="188" width="32" height="40" rx="13" fill="url(#sk)"/>
 
-            <!-- Cabeça -->
-            <ellipse cx="255" cy="175" rx="68" ry="80" fill="url(#gSkin)" filter="url(#softGlow)"/>
+      <!-- Cabeça -->
+      <ellipse cx="260" cy="148" rx="72" ry="82" fill="url(#sk)" filter="url(#glow)"/>
 
-            <!-- Cabelo -->
-            <path d="M190 145 Q195 85 255 78 Q315 85 320 145 Q305 110 255 108 Q205 110 190 145Z"
-                  fill="url(#gHair)"/>
-            <path d="M188 150 Q175 200 182 240 Q192 210 195 165Z" fill="url(#gHair)"/>
-            <path d="M322 150 Q335 200 328 240 Q318 210 315 165Z" fill="url(#gHair)"/>
-            <!-- Mechas suaves -->
-            <path d="M255 108 Q230 115 210 140 Q225 120 255 115Z" fill="#4a2200" opacity=".6"/>
+      <!-- Cabelo -->
+      <path d="M192 118 Q197 55 260 48 Q323 55 328 118 Q312 82 260 80 Q208 82 192 118Z" fill="url(#hr)"/>
+      <path d="M190 125 Q176 178 183 218 Q194 185 198 140Z" fill="url(#hr)"/>
+      <path d="M330 125 Q344 178 337 218 Q326 185 322 140Z" fill="url(#hr)"/>
+      <!-- Mechas longas -->
+      <path d="M190 130 Q175 220 182 300 Q196 260 196 170Z" fill="#2a1400" opacity=".7"/>
+      <path d="M330 130 Q345 220 338 300 Q324 260 324 170Z" fill="#2a1400" opacity=".7"/>
 
-            <!-- Olhos sorridentes -->
-            <path d="M228 168 Q235 160 242 168" fill="none" stroke="#2a1000" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M268 168 Q275 160 282 168" fill="none" stroke="#2a1000" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- Cílios / sobrancelha -->
-            <path d="M226 162 Q235 156 244 162" fill="none" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
-            <path d="M266 162 Q275 156 284 162" fill="none" stroke="#1a0800" stroke-width="2" stroke-linecap="round"/>
+      <!-- Sobrancelhas -->
+      <path d="M228 128 Q240 121 252 127" fill="none" stroke="#2a1200" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M268 127 Q280 121 292 128" fill="none" stroke="#2a1200" stroke-width="3.5" stroke-linecap="round"/>
 
-            <!-- Nariz sutil -->
-            <path d="M252 182 Q255 190 258 182" fill="none" stroke="rgba(100,50,20,.4)" stroke-width="2" stroke-linecap="round"/>
+      <!-- Olhos (sorridentes – fechados em curva) -->
+      <path d="M228 145 Q240 136 252 145" fill="none" stroke="#1a0800" stroke-width="4" stroke-linecap="round"/>
+      <path d="M268 145 Q280 136 292 145" fill="none" stroke="#1a0800" stroke-width="4" stroke-linecap="round"/>
+      <!-- íris aberta leve -->
+      <ellipse cx="240" cy="147" rx="8" ry="6" fill="#3a2000" opacity=".5"/>
+      <ellipse cx="280" cy="147" rx="8" ry="6" fill="#3a2000" opacity=".5"/>
 
-            <!-- Sorriso -->
-            <path d="M237 200 Q255 215 273 200" fill="none" stroke="#c06040" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M237 200 Q255 218 273 200" fill="rgba(220,100,80,.35)"/>
+      <!-- Nariz -->
+      <path d="M256 165 Q260 174 264 165" fill="none" stroke="rgba(120,60,20,.35)" stroke-width="2.5" stroke-linecap="round"/>
 
-            <!-- Blusher suave -->
-            <ellipse cx="230" cy="196" rx="12" ry="7" fill="rgba(220,100,100,.18)"/>
-            <ellipse cx="280" cy="196" rx="12" ry="7" fill="rgba(220,100,100,.18)"/>
+      <!-- Sorriso amplo -->
+      <path d="M238 180 Q260 198 282 180" fill="none" stroke="#b85040" stroke-width="4" stroke-linecap="round"/>
+      <path d="M238 180 Q260 202 282 180" fill="rgba(210,90,70,.3)"/>
+      <!-- dentes -->
+      <path d="M243 182 Q260 192 277 182" fill="rgba(255,255,255,.55)"/>
 
-            <!-- Brinco -->
-            <circle cx="188" cy="185" r="5" fill="#FFD700"/>
-            <line x1="188" y1="190" x2="188" y2="202" stroke="#FFD700" stroke-width="2"/>
-            <circle cx="188" cy="205" r="4" fill="#FFD700" opacity=".8"/>
+      <!-- Blush -->
+      <ellipse cx="230" cy="172" rx="14" ry="8" fill="rgba(230,110,110,.20)"/>
+      <ellipse cx="290" cy="172" rx="14" ry="8" fill="rgba(230,110,110,.20)"/>
 
-            <!-- Braço esquerdo (posado, segurando algo) -->
-            <path d="M175 265 Q140 330 130 420 Q140 440 162 435 Q170 360 200 310 Q190 285 175 265Z"
-                  fill="url(#gOutfit)"/>
-            <!-- Mão esquerda -->
-            <ellipse cx="128" cy="430" rx="22" ry="16" fill="url(#gSkin)" transform="rotate(-20,128,430)"/>
+      <!-- Brincos dourados -->
+      <circle cx="189" cy="162" r="6" fill="#FFD700"/>
+      <line x1="189" y1="168" x2="189" y2="182" stroke="#FFD700" stroke-width="2.5"/>
+      <circle cx="189" cy="186" r="5" fill="#FFD700" opacity=".8"/>
 
-            <!-- Braço direito (levemente aberto, sorridente) -->
-            <path d="M325 265 Q365 330 370 420 Q360 442 338 436 Q330 360 300 310 Q310 285 325 265Z"
-                  fill="url(#gOutfit)"/>
-            <!-- Mão direita -->
-            <ellipse cx="372" cy="430" rx="22" ry="16" fill="url(#gSkin)" transform="rotate(20,372,430)"/>
+      <!-- Braço esquerdo -->
+      <path d="M185 235 Q148 305 136 400 Q148 425 168 418 Q178 345 208 282 Q200 255 185 235Z" fill="url(#ou)"/>
+      <ellipse cx="132" cy="410" rx="24" ry="18" fill="url(#sk)" transform="rotate(-25,132,410)"/>
 
-            <!-- Crachá / name tag -->
-            <rect x="262" y="320" width="52" height="36" rx="4" fill="rgba(255,210,0,.8)"/>
-            <rect x="264" y="326" width="48" height="5" rx="2" fill="#2b0a3d"/>
-            <rect x="264" y="334" width="35" height="4" rx="2" fill="#2b0a3d" opacity=".5"/>
+      <!-- Braço direito (levemente afastado, pose confiante) -->
+      <path d="M335 235 Q375 308 380 400 Q368 426 348 418 Q340 345 312 282 Q320 255 335 235Z" fill="url(#ou)"/>
+      <ellipse cx="383" cy="410" rx="24" ry="18" fill="url(#sk)" transform="rotate(25,383,410)"/>
+    </svg>
+  </div>
 
-            <!-- Sombra nos pés -->
-            <ellipse cx="255" cy="858" rx="140" ry="10" fill="rgba(0,0,0,.25)"/>
-        </svg>
+  <!-- ══════════ TOPO ══════════ -->
+
+  <!-- Barra superior com logo -->
+  <div class="top-bar">
+    <div class="logo-badge">MB</div>
+    <div>
+      <div class="logo-name">MISS BIA</div>
+      <span class="logo-sub">LINGERIE</span>
+    </div>
+  </div>
+
+  <!-- Raios/acento -->
+  <div class="accent-lines">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="10,5 30,5 20,40 40,40 10,75 20,45 0,45" fill="#FFD700" opacity=".85"/>
+      <polygon points="35,5 55,5 45,40 65,40 35,75 45,45 25,45" fill="#FFD700" opacity=".55"/>
+    </svg>
+  </div>
+
+  <!-- Faixa amarela ESTAMOS CONTRATANDO -->
+  <div class="banner-hiring">
+    <div class="banner-hiring-inner">
+      ESTAMOS<br>CONTRATANDO!
+    </div>
+  </div>
+
+  <!-- ══════════ NOME DA VAGA ══════════ -->
+  <div class="job-title">
+    <span class="job-title-main">VISUAL<br>MERCHANDISING</span>
+    <span class="job-title-sub">Faça parte do TIME MISS BIA</span>
+  </div>
+
+  <!-- ══════════ BENEFÍCIOS ══════════ -->
+  <div class="benefits-section">
+    <div class="benefits-title">
+      <span class="icon">🎁</span> BENEFÍCIOS:
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-icon-box">🚌</div>
+      <div class="benefit-text">Vale-Transporte</div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-icon-box">🦷</div>
+      <div class="benefit-text">Plano Odontológico</div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-icon-box">📋</div>
+      <div class="benefit-text">CLT</div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-icon-box">🏊</div>
+      <div class="benefit-text">Convênio SESC</div>
+    </div>
+    <div class="benefit-row">
+      <div class="benefit-icon-box">📈</div>
+      <div class="benefit-text">Plano de Crescimento</div>
+    </div>
+  </div>
+
+  <!-- ══════════ COLUNA DIREITA BAIXA ══════════ -->
+  <div class="info-col">
+
+    <!-- Modelo de trabalho e Atuação (fundo amarelo) -->
+    <div class="salary-box">
+      <div class="salary-label"><span class="ico">📍</span> MODELO DE TRABALHO:</div>
+      <div class="salary-value" style="font-size:38px;letter-spacing:0;">100% PRESENCIAL</div>
+      <div class="salary-extra">ATUAÇÃO: OSASCO – ITAPEVI</div>
     </div>
 
-    <!-- LINHA DIVISÓRIA VERTICAL SUTIL -->
-    <div class="vert-line"></div>
-
-    <!-- COLUNA ESQUERDA -->
-    <div class="left-col">
-
-        <!-- LOGO -->
-        <div class="logo-wrap">
-            <div class="logo-icon">MB</div>
-            <div class="logo-text-block">
-                <div class="logo-name">MISS BIA</div>
-                <div class="logo-sub">LINGERIE</div>
-            </div>
-        </div>
-
-        <!-- FAIXA AMARELA: ESTAMOS CONTRATANDO -->
-        <div class="banner-hiring">
-            ESTAMOS<br>CONTRATANDO!
-        </div>
-
-        <!-- FAIXA ROXA: VISUAL MERCHANDISING -->
-        <div class="banner-role">
-            VISUAL<br>MERCHANDISING
-        </div>
-
-        <!-- SLOGAN -->
-        <div class="slogan">
-            Faça parte do <span>TIME MISS BIA</span>
-        </div>
-
-        <!-- BENEFÍCIOS -->
-        <div class="benefits-block">
-            <div class="benefits-title">Benefícios:</div>
-            <div class="benefits-list">
-                <div class="benefit-item"><div class="benefit-dot"></div>CLT</div>
-                <div class="benefit-item"><div class="benefit-dot"></div>Plano Odontológico</div>
-                <div class="benefit-item"><div class="benefit-dot"></div>Vale-Transporte</div>
-                <div class="benefit-item"><div class="benefit-dot"></div>Convênio SESC</div>
-                <div class="benefit-item"><div class="benefit-dot"></div>Plano de Crescimento</div>
-            </div>
-        </div>
-
-        <!-- MODELO DE TRABALHO / ATUAÇÃO -->
-        <div class="info-yellow">
-            <div class="info-yellow-row">
-                <div class="info-label">Modelo de Trabalho:</div>
-                <div class="info-value">100% PRESENCIAL</div>
-            </div>
-            <div style="height:8px;border-top:1px solid rgba(44,0,80,.2);margin:6px 0"></div>
-            <div class="info-yellow-row">
-                <div class="info-label">Atuação:</div>
-                <div class="info-value">OSASCO – ITAPEVI</div>
-            </div>
-        </div>
-
-        <!-- CTA CONTATO -->
-        <div class="cta-block">
-            <div class="cta-icon">💬</div>
-            <div class="cta-text">
-                <div class="cta-label">Envie seu Currículo</div>
-                <div class="cta-phone">11 95117-0077</div>
-            </div>
-        </div>
-
+    <!-- Local -->
+    <div class="local-box">
+      <div class="local-pin">📍</div>
+      <div class="local-content">
+        <div class="local-label">Onde atuamos:</div>
+        <div class="local-value">Osasco &amp; Itapevi</div>
+        <div class="local-detail">Lojas MISS BIA LINGERIE</div>
+      </div>
     </div>
 
-    <!-- SELO INÍCIO IMEDIATO -->
-    <div class="seal">
-        <div class="seal-circle">
-            <div class="seal-line1">INÍCIO</div>
-            <div class="seal-line2">IMEDIATO!</div>
-            <div class="seal-line3">★ ★ ★</div>
-        </div>
+  </div>
+
+  <!-- ══════════ RODAPÉ ══════════ -->
+  <div class="footer">
+
+    <!-- WhatsApp -->
+    <div class="wa-block">
+      <div class="wa-icon">💬</div>
+      <div class="wa-text">
+        <div class="wa-label">ENVIE SEU CURRÍCULO</div>
+        <div class="wa-number">11 95117-0077</div>
+      </div>
     </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- Botão INÍCIO IMEDIATO -->
+    <div class="inicio-btn">
+      <span class="inicio-icon">🚀</span>
+      <span class="inicio-text">INÍCIO<br>IMEDIATO!</span>
+    </div>
+
+  </div>
 
 </div>
 </body>
